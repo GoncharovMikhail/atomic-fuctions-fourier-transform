@@ -2,7 +2,16 @@ import numpy as np
 
 
 def ft_up_m(m, t, nprod=20):
-    prod = 1
-    for i in 1, nprod:
-        prod = prod * np.sinc(m * t / (2 * m) ** i) ** 2 / np.sinc(t / (2 * m) ** i)
-    return prod
+    powers_of_2m = np.power.outer(
+        2 * m,
+        np.linspace(1, nprod, nprod)
+    )
+    numerator = np.power(
+        np.sinc(np.divide.outer(m * t, powers_of_2m) / np.pi),
+        2
+    )
+    denominator = np.sinc(np.divide.outer(t, powers_of_2m) / np.pi)
+    return np.prod(
+        numerator / denominator,
+        axis=1
+    )
