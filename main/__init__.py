@@ -1,24 +1,21 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
 # todo еще не реализовано
 #  pi_m(x)
 #  fip_a,n(x)
 #  ch_a,n(x)
 #  eup_a(x)
+from funcs.F_capital_up_n import Fup_n
 
 # todo надо проверить реализацию
-#  functions.Fup_n
+#  funcs.Fup_n
 
 if __name__ == "__main__":
-    print()
+    nx = 2 ** 14
+    x = np.linspace(-1.1, 1.1, nx)
+    n = 6
+    y = Fup_n(n, x)
 
-    # check:
-    #  fup_m
-    #  fp_m_n
-    #  cup
-
-    # nx = 2 ** 14
-    # x = np.linspace(-1.1, 1.1, nx)
-    # y = up(x)
-
-    # todo не работает
-    # plt.figure()
-    # plt.plot(x, y)
+    plt.figure()
+    plt.plot(x, y)
